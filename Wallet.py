@@ -7,14 +7,38 @@ def record(total):
 def readd(operation):
     with open('wallet.txt', 'r') as txt:
         txt = txt.read()
-        balance = str(txt)
+        balance = float(txt)
 
-        if operation == 'д' or operation == 'р' :
-            howMany = input('Сумма:')
+
+        if operation == 'д':
+            summ = input('Сумма:')
             category = input('Категория: ')
             description = input('Описание: ')
             date1 = input('Дата: ')
-            record(str(txt) + '\n' +'Дата: ' +date1 + '\n' +'Категория: ' + category + '\n' + 'Сумма: '  + howMany + '\n' + 'Описание: ' +description)
+            howMany1 = input('Баланс: ')
+            curr_balance = float(summ) + float(howMany1)
+            record(str(txt) +
+                   '\n' +
+                   'Дата: ' + date1 +
+                   '\n' +'Категория: ' + category +
+                   '\n' + 'Сумма: '  + summ +
+                   '\n' + 'Описание: ' +description + '\n' +
+                   'Баланс: ' + str(curr_balance) + '\n')
+        elif operation == 'р':
+            if operation == 'д':
+                summ = input('Сумма:')
+                category = input('Категория: ')
+                description = input('Описание: ')
+                date1 = input('Дата: ')
+                howMany1 = input('Баланс: ')
+                curr_balance = float(summ) - float(howMany1)
+                record(str(txt) +
+                       '\n' +
+                       'Дата: ' + date1 +
+                       '\n' + 'Категория: ' + category +
+                       '\n' + 'Сумма: ' + summ +
+                       '\n' + 'Описание: ' + description +'\n' +
+                       'Баланс: ' + str(curr_balance) + '\n')
         elif operation == 'п':
             with open('wallet.txt') as f:
                 s = mmap.mmap(f.fileno(),0, access=mmap.ACCESS_READ)
@@ -22,7 +46,6 @@ def readd(operation):
                     print('true')
                 elif s.find('Покупка гаджета') != -1:
                     print('true')
-
         elif operation == 'и':
             s = input('Введите текст для замены: ')
             f = open('wallet.txt', 'r+')
@@ -30,9 +53,14 @@ def readd(operation):
             f.write(s)
             f.close()
             print('Текст изменён')
+        elif operation == 'б':
+            howMany = float(input('Сколько: '))
+            record(float(txt) + howMany)
+        elif operation == 1:
+            print('На балансе ' + str(balance) + ' руб \n')
         elif operation == 'в':
             quit()
 
 while True:
     readd(1)
-    readd(input('Доход/Расход\n Д/Р: ').lower())
+    readd(input('Баланс/Поиск/Изменение/Доход/Расход\n Б/П/И/Д/Р/П/1: ').lower())
