@@ -7,7 +7,7 @@ def record(total):
 def readd(operation):
     with open('wallet.txt', 'r') as txt:
         txt = txt.read()
-        balance = float(txt)
+        balance = str(txt)
 
 
         if operation == 'д':
@@ -25,20 +25,19 @@ def readd(operation):
                    '\n' + 'Описание: ' +description + '\n' +
                    'Баланс: ' + str(curr_balance) + '\n')
         elif operation == 'р':
-            if operation == 'д':
-                summ = input('Сумма:')
-                category = input('Категория: ')
-                description = input('Описание: ')
-                date1 = input('Дата: ')
-                howMany1 = input('Баланс: ')
-                curr_balance = float(summ) - float(howMany1)
-                record(str(txt) +
-                       '\n' +
-                       'Дата: ' + date1 +
-                       '\n' + 'Категория: ' + category +
-                       '\n' + 'Сумма: ' + summ +
-                       '\n' + 'Описание: ' + description +'\n' +
-                       'Баланс: ' + str(curr_balance) + '\n')
+            summ = input('Сумма:')
+            category = input('Категория: ')
+            description = input('Описание: ')
+            date1 = input('Дата: ')
+            howMany1 = input('Баланс: ')
+            curr_balance = float(howMany1) - float(summ)
+            record(str(txt) +
+                   '\n' +
+                   'Дата: ' + date1 +
+                   '\n' + 'Категория: ' + category +
+                   '\n' + 'Сумма: ' + summ +
+                   '\n' + 'Описание: ' + description + '\n' +
+                   'Баланс: ' + str(curr_balance) + '\n')
         elif operation == 'п':
             with open('wallet.txt') as f:
                 s = mmap.mmap(f.fileno(),0, access=mmap.ACCESS_READ)
@@ -57,7 +56,7 @@ def readd(operation):
             howMany = float(input('Сколько: '))
             record(float(txt) + howMany)
         elif operation == 1:
-            print('На балансе ' + str(balance) + ' руб \n')
+            print('На балансе ' + str(balance) + ' руб ')
         elif operation == 'в':
             quit()
 
