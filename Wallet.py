@@ -23,7 +23,7 @@ def readd(operation):
                    '\n' +'Категория: ' + category +
                    '\n' + 'Сумма: '  + summ +
                    '\n' + 'Описание: ' +description + '\n' +
-                   'Баланс: ' + str(curr_balance) + 'руб.' + '\n')
+                   'Баланс: ' + str(curr_balance) + ' руб.' + '\n')
         elif operation == 'р':
             summ = input('Сумма:')
             category = input('Категория: ')
@@ -37,7 +37,7 @@ def readd(operation):
                    '\n' + 'Категория: ' + category +
                    '\n' + 'Сумма: ' + summ +
                    '\n' + 'Описание: ' + description + '\n' +
-                   'Баланс: ' + str(curr_balance) +'руб.'+ '\n')
+                   'Баланс: ' + str(curr_balance) +' руб.'+ '\n')
         elif operation == 'п':
             with open('wallet.txt') as f:
                 s = mmap.mmap(f.fileno(),0, access=mmap.ACCESS_READ)
